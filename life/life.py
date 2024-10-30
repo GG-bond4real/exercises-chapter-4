@@ -81,3 +81,8 @@ class Game:
         pyplot.clf()
         pyplot.matshow(self.board, fignum=0, cmap='binary')
         pyplot.show()
+
+
+class pattern():
+    def __init__(self, grid):
+        pattern.grid = grid
