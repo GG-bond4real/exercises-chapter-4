@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib import pyplot
 from scipy.signal import convolve2d
-
+"""Brief description of the function."""
 glider = np.array([[0, 1, 0], [0, 0, 1], [1, 1, 1]])
 
 blinker = np.array([
