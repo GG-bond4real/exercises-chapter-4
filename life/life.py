@@ -81,8 +81,38 @@ class Game:
         pyplot.clf()
         pyplot.matshow(self.board, fignum=0, cmap='binary')
         pyplot.show()
+    
 
 
-class pattern():
+class Pattern():
     def __init__(self, grid):
-        pattern.grid = grid
+        Pattern.grid = grid
+
+    def flip_vertical(self):
+        fvgrid = self.grid[::1]
+        return Pattern(fvgrid)
+   
+    def flip_horizontal(self):
+        fhgrid = [row[::1] for row in self.grid]
+        return Pattern(fhgrid)
+ 
+    def flip_diag(self):
+        fdgrid = [[self.grid[i][j] for
+                   i in range(len(self.grid))] for 
+                  j in range(len(self.matrix[0]))]
+        return Pattern(fdgrid)
+ 
+    def rotate(self, n):
+        if n//4 == 1:
+            f1 = flip_horizontal(self)
+            f2 = flip_diag(f1)
+            return f2
+        if n//4 == 2:
+            f3 = flip_horizontal(self)
+            f4 = flip_vertical(f3)
+            return f4
+        if n//4 == 3:
+            f5 = flip_diag(self)
+            return flip_horizontal(f5)
+        if n//4 == 0:
+            return self
